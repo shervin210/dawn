@@ -1,53 +1,63 @@
 {
-  "name": "t:sections.footer.name",
+  "name": "Mobile Footer Navigation",
   "type": "footer",
   "sections": {
-    "footer": {
+    "mobile_footer_navigation": {
       "type": "footer",
+      "settings": {
+        "primary_color": "#4F46E5",
+        "inactive_color": "#9CA3AF",
+        "custom_class": ""
+      },
       "blocks": {
-        "footer-0": {
-          "type": "link_list",
+        "menu_item_1": {
+          "type": "menu_item",
           "settings": {
-            "heading": "Quick links",
-            "menu": "footer"
+            "label": "Home",
+            "link": "/",
+            "icon": "home",
+            "custom_icon": ""
           }
         },
-        "footer-1": {
-          "type": "link_list",
+        "menu_item_2": {
+          "type": "menu_item",
           "settings": {
-            "heading": "Info",
-            "menu": "footer"
+            "label": "Club",
+            "link": "/pages/club",
+            "icon": "club",
+            "custom_icon": ""
           }
         },
-        "footer-2": {
-          "type": "text",
+        "menu_item_3": {
+          "type": "menu_item",
           "settings": {
-            "heading": "Our mission",
-            "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
+            "label": "Profile",
+            "link": "/account",
+            "icon": "profile",
+            "custom_icon": ""
+          }
+        },
+        "menu_item_4": {
+          "type": "menu_item",
+          "settings": {
+            "label": "Basket",
+            "link": "/cart",
+            "icon": "basket",
+            "custom_icon": ""
+          }
+        },
+        "menu_item_5": {
+          "type": "menu_item",
+          "settings": {
+            "label": "Categories",
+            "link": "/collections",
+            "icon": "categories",
+            "custom_icon": ""
           }
         }
       },
-      "block_order": [
-        "footer-0",
-        "footer-1",
-        "footer-2"
-      ],
-      "settings": {
-        "color_scheme": "scheme-1",
-        "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
-        "show_social": true,
-        "enable_country_selector": false,
-        "enable_language_selector": false,
-        "payment_enable": true,
-        "show_policy": false,
-        "margin_top": 48,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
+      "block_order": ["menu_item_1", "menu_item_2", "menu_item_3", "menu_item_4", "menu_item_5"]
     }
   },
-  "order": [
-    "footer"
-  ]
+  "order": ["mobile_footer_navigation"]
 }

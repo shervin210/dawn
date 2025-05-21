@@ -1,0 +1,23 @@
+{
+    "sections": {
+      "main": {
+        "type": "main-page",
+        "settings": {
+          "padding_top": 40,
+          "padding_bottom": 40,
+          "page_title": "Club",
+          "show_breadcrumbs": false,
+          "background_color": "#FFFFFF"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "primary_color": "#4F46E5",
+          "inactive_color": "#9CA3AF",
+          "custom_class": ""
+        }
+      }
+    },
+    "order": ["main", "footer"]
+  }

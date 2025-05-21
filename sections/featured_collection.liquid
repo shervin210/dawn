@@ -1,0 +1,318 @@
+{% schema %}
+  {
+    "name": "Trending Section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Section Title",
+        "default": "Trending"
+      },
+      {
+        "type": "url",
+        "id": "see_all_link",
+        "label": "See All Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "hashtags",
+        "label": "Hashtags (comma-separated)",
+        "default": "SherpaLinedJacket,TheNorthFacePuffer,GucciHorsebitLoafers"
+      },
+      {
+        "type": "image_picker",
+        "id": "for_her_image",
+        "label": "For Her Image"
+      }, {
+        "type": "text",
+        "id": "for_her_label",
+        "label": "For Her Label",
+        "default": "For Her"
+      }, {
+        "type": "text",
+        "id": "for_her_cta",
+        "label": "For Her CTA Text",
+        "default": "Get Special Offer"
+      }, {
+        "type": "image_picker",
+        "id": "for_him_image",
+        "label": "For Him Image"
+      }, {
+        "type": "text",
+        "id": "for_him_label",
+        "label": "For Him Label",
+        "default": "For Him"
+      }, {
+        "type": "text",
+        "id": "for_him_cta",
+        "label": "For Him CTA Text",
+        "default": "Get Special Offer"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Trending Section",
+        "settings": {
+          "title": "Trending",
+          "see_all_link": "/collections/all",
+          "hashtags": "SherpaLinedJacket,TheNorthFacePuffer,GucciHorsebitLoafers",
+          "for_her_label": "For Her",
+          "for_her_cta": "Get Special Offer",
+          "for_him_label": "For Him",
+          "for_him_cta": "Get Special Offer"
+        }
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+  /* Base styles for mobile */
+  .trending-section {
+    width: 100%;
+    padding: 0 1rem;
+    margin-top: 1.5rem;
+    background-color: #fff;
+  }
+
+  .trending-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .trending-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #000;
+  }
+
+  .see-all {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--primary, #1f2937);
+    text-decoration: none;
+  }
+
+  .trending-tags {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    margin-bottom: 1rem;
+  }
+
+  .trending-tags::-webkit-scrollbar {
+    display: none;
+  }
+
+  .trending-tags {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .tag {
+    display: inline-block;
+    background-color: #f3f4f6;
+    color: #1f2937;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+  }
+
+  /* Mobile styles for offer cards */
+  .trending-offers {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .offer-card {
+    position: relative;
+    width: 175px;
+    height: 220px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+
+  .offer-card img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .offer-card .label {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 32px;
+    background-color: #a30000;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    z-index: 1;
+  }
+
+  .offer-card.for-her .label {
+    border-top-right-radius: 24px;
+  }
+
+  .offer-card.for-him .label {
+    border-top-left-radius: 24px;
+  }
+
+  /* Hide CTA on mobile to match TSX design */
+  .offer-card .cta {
+    display: none;
+  }
+
+  /* Desktop styles */
+  @media (min-width: 768px) {
+    .trending-section {
+      padding: 2rem 4rem;
+    }
+
+    .trending-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      color: var(--primary, #1f2937);
+    }
+
+    .trending-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .see-all {
+      font-size: 0.9rem;
+      color: #000000;
+      text-decoration: none;
+    }
+
+    .trending-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      overflow-x: visible;
+    }
+
+    .tag {
+      border: 1px solid var(--primary, #1f2937);
+      padding: 0.4rem 0.8rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      color: #333;
+      background-color: transparent;
+    }
+
+    .trending-offers {
+      flex-direction: row;
+      gap: 1.5rem;
+    }
+
+    .offer-card {
+      flex: 1;
+      width: 648px;
+      height: 384px;
+      border-radius: 30px;
+      box-shadow: none;
+    }
+
+    .offer-card .label {
+      top: 0;
+      left: 0;
+      width: 128px;
+      height: 45px;
+      padding: 8px 24px;
+      border-top-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      border-top-right-radius: 0;
+      border-top-left-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    .offer-card.for-her .label,
+    .offer-card.for-him .label {
+      border-top-right-radius: 0;
+      border-top-left-radius: 30px;
+    }
+
+    .offer-card .cta {
+      display: flex;
+      width: 280px;
+      height: 46px;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 140%;
+      text-align: right;
+      margin-left: auto;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      color: white;
+      z-index: 1;
+    }
+  }
+</style>
+
+<section class="trending-section">
+  <!-- Header -->
+  <div class="trending-header">
+    <h2 class="trending-title">{{ section.settings.title | escape }}</h2>
+    <a href="{{ section.settings.see_all_link | default: '#' }}" class="see-all">See All</a>
+  </div>
+
+  <!-- Tags -->
+  <div class="trending-tags">
+    {% assign hashtags = section.settings.hashtags | split: "," %}
+    {% for tag in hashtags %}
+      <span class="tag">#{{ tag | strip | escape }}</span>
+    {% endfor %}
+  </div>
+
+  <!-- Offers -->
+  <div class="trending-offers">
+    <!-- For Her Card -->
+    <a href="/for-her" class="offer-card for-her">
+      <span class="label">{{ section.settings.for_her_label | escape }}</span>
+      <img
+        src="{% if section.settings.for_her_image != blank %}{{ section.settings.for_her_image | img_url: 'master' }}{% else %}{{ 'for_her_desktop.png' | asset_url }}{% endif %}"
+        alt="{{ section.settings.for_her_label | escape }}"
+        width="175"
+        height="220"
+        loading="lazy" />
+      <div class="cta">{{ section.settings.for_her_cta | escape }}</div>
+    </a>
+
+    <!-- For Him Card -->
+    <a href="/for-him" class="offer-card for-him">
+      <span class="label">{{ section.settings.for_him_label | escape }}</span>
+      <img
+        src="{% if section.settings.for_him_image != blank %}{{ section.settings.for_him_image | img_url: 'master' }}{% else %}{{ 'for_him_desktop.png' | asset_url }}{% endif %}"
+        alt="{{ section.settings.for_him_label | escape }}"
+        width="175"
+        height="220"
+        loading="lazy" />
+      <div class="cta">{{ section.settings.for_him_cta | escape }}</div>
+    </a>
+  </div>
+</section>
